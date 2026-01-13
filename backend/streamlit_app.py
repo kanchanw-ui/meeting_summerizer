@@ -360,11 +360,30 @@ elif st.session_state.view == 'home':
         
         emails = result['emails']
         
+import streamlit.components.v1 as components
+
+def copy_to_clipboard(text):
+    # JavaScript hack to copy text to clipboard
+    components.html(
+        f"""
+        <script>
+        navigator.clipboard.writeText(`{text.replace('`', '\`')}`);
+        </script>
+        """,
+        height=0,
+    )
+
+# ... (inside the loop)
         for i, tab in enumerate([tab1, tab2, tab3]):
             with tab:
                 if i < len(emails):
-                    # Capture the edited text from the text area
-                    email_content = st.text_area("Copy Text", value=emails[i], height=300, key=f"email_res_{i}")
+                    # Copy Button
+                    if st.button("📋 Copy Text", key=f"copy_btn_{i}"):
+                        copy_to_clipboard(emails[i])
+                        st.toast("Copied to clipboard!")
+
+                    # Capture the edited text from the text area (Label hidden)
+                    email_content = st.text_area("Email Draft", value=emails[i], height=300, key=f"email_res_{i}", label_visibility="collapsed")
                     
                     # Extract subject for mailto
                     subject = "Meeting Follow-up"
@@ -383,7 +402,7 @@ elif st.session_state.view == 'home':
                     safe_body = urllib.parse.quote(body)
                     
                     st.markdown(f"""
-                    <div style="display:flex;gap:10px;">
+                    <div style="display:flex;gap:10px;margin-top:10px;">
                         <a href="https://mail.google.com/mail/?view=cm&fs=1&su={safe_subject}&body={safe_body}" target="_blank" style="text-decoration:none;background-color:#ea4335;color:white;padding:8px 16px;border-radius:5px;font-weight:bold;">Send via Gmail</a>
                         <a href="mailto:?subject={safe_subject}&body={safe_body}" style="text-decoration:none;background-color:#0078d4;color:white;padding:8px 16px;border-radius:5px;font-weight:bold;">Send via Outlook</a>
                     </div>
