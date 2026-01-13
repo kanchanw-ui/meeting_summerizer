@@ -346,40 +346,42 @@ elif st.session_state.view == 'home':
             
         result = st.session_state.generation_result
         
-        col_sum, col_email = st.columns(2)
+        # Stacked Layout (No Columns)
         
-        with col_sum:
-            st.subheader("Meeting Summary")
-            st.info(result['summary'])
-            st.button("📋 Copy Summary", on_click=lambda: st.write("Copied! (Simulated)"))
-            
-        with col_email:
-            st.subheader("Email Drafts")
-            tab1, tab2, tab3 = st.tabs(["Formal", "Action-Oriented", "Casual"])
-            
-            emails = result['emails']
-            
-            for i, tab in enumerate([tab1, tab2, tab3]):
-                with tab:
-                    if i < len(emails):
-                        email_content = emails[i]
-                        st.text_area("Content", email_content, height=300, key=f"email_res_{i}")
+        # Summary Section
+        st.subheader("Meeting Summary")
+        st.info(result['summary'])
+        st.button("📋 Copy Summary", on_click=lambda: st.write("Copied! (Simulated)"))
+        
+        st.divider()
+        
+        # Email Section
+        st.subheader("Email Drafts")
+        tab1, tab2, tab3 = st.tabs(["Formal", "Action-Oriented", "Casual"])
+        
+        emails = result['emails']
+        
+        for i, tab in enumerate([tab1, tab2, tab3]):
+            with tab:
+                if i < len(emails):
+                    email_content = emails[i]
+                    st.text_area("Content", email_content, height=300, key=f"email_res_{i}")
+                    
+                    # Extract subject for mailto
+                    subject = "Meeting Follow-up"
+                    body = email_content
+                    if "Subject:" in email_content:
+                        parts = email_content.split("\n", 1)
+                        subject = parts[0].replace("Subject:", "").strip()
+                        body = parts[1].strip() if len(parts) > 1 else ""
                         
-                        # Extract subject for mailto
-                        subject = "Meeting Follow-up"
-                        body = email_content
-                        if "Subject:" in email_content:
-                            parts = email_content.split("\n", 1)
-                            subject = parts[0].replace("Subject:", "").strip()
-                            body = parts[1].strip() if len(parts) > 1 else ""
-                            
-                        import urllib.parse
-                        safe_subject = urllib.parse.quote(subject)
-                        safe_body = urllib.parse.quote(body)
-                        
-                        st.markdown(f"""
-                        <div style="display:flex;gap:10px;">
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&su={safe_subject}&body={safe_body}" target="_blank" style="text-decoration:none;background-color:#ea4335;color:white;padding:8px 16px;border-radius:5px;font-weight:bold;">Send via Gmail</a>
-                            <a href="mailto:?subject={safe_subject}&body={safe_body}" style="text-decoration:none;background-color:#0078d4;color:white;padding:8px 16px;border-radius:5px;font-weight:bold;">Send via Outlook</a>
-                        </div>
-                        """, unsafe_allow_html=True)
+                    import urllib.parse
+                    safe_subject = urllib.parse.quote(subject)
+                    safe_body = urllib.parse.quote(body)
+                    
+                    st.markdown(f"""
+                    <div style="display:flex;gap:10px;">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&su={safe_subject}&body={safe_body}" target="_blank" style="text-decoration:none;background-color:#ea4335;color:white;padding:8px 16px;border-radius:5px;font-weight:bold;">Send via Gmail</a>
+                        <a href="mailto:?subject={safe_subject}&body={safe_body}" style="text-decoration:none;background-color:#0078d4;color:white;padding:8px 16px;border-radius:5px;font-weight:bold;">Send via Outlook</a>
+                    </div>
+                    """, unsafe_allow_html=True)
