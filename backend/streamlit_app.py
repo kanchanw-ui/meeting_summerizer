@@ -12,11 +12,96 @@ load_dotenv()
 
 # Configure Page
 st.set_page_config(
-    page_title="AI Meeting Summarizer",
+    page_title="Meeting AI",
     page_icon="🎙️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# --- Custom CSS to mimic React UI ---
+st.markdown("""
+<style>
+    /* Main Background */
+    .stApp {
+        background-color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+    }
+    
+    /* Sidebar */
+    section[data-testid="stSidebar"] {
+        background-color: white;
+        border-right: 1px solid #e5e7eb;
+    }
+    
+    /* Sidebar Nav Buttons */
+    div[data-testid="stSidebar"] button {
+        background-color: transparent;
+        color: #6b7280;
+        border: none;
+        text-align: left;
+        font-weight: 500;
+        padding: 0.75rem 1rem;
+        transition: all 0.2s;
+    }
+    div[data-testid="stSidebar"] button:hover {
+        background-color: #f1f5f9;
+        color: #111827;
+    }
+    
+    /* Primary Button (Blue) */
+    div.stButton > button[kind="primary"] {
+        background-color: #2563eb;
+        color: white;
+        border-radius: 12px;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+    }
+    div.stButton > button[kind="primary"]:hover {
+        background-color: #1d4ed8;
+        border-color: #1d4ed8;
+    }
+    
+    /* Secondary Button (White) */
+    div.stButton > button[kind="secondary"] {
+        background-color: white;
+        color: #111827;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+    }
+    
+    /* Cards/Containers */
+    div[data-testid="stExpander"], div.stTextArea, div.stTextInput {
+        background-color: white;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+    }
+    
+    /* Headers */
+    h1, h2, h3 {
+        color: #111827;
+        font-weight: 700;
+    }
+    
+    /* Remove standard Streamlit header decoration */
+    header {visibility: hidden;}
+    
+    /* Custom Avatar Circle */
+    .avatar-circle {
+        width: 32px;
+        height: 32px;
+        background-color: #2563eb;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 14px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # --- Database Functions ---
 def init_db():
@@ -165,7 +250,7 @@ if not st.session_state.user:
 
 # --- Sidebar ---
 with st.sidebar:
-    st.title("Meeting AI")
+    st.markdown("<h1 style='color:#2563eb; font-size:1.25rem; margin-bottom:2rem;'>Meeting AI</h1>", unsafe_allow_html=True)
     
     if st.button("➕ New Meeting", use_container_width=True):
         st.session_state.view = 'home'
