@@ -350,7 +350,7 @@ elif st.session_state.view == 'home':
         st.header("Upload Transcript")
         st.markdown("Supported formats: .txt, .docx")
         
-        uploaded_file = st.file_uploader("Choose a file", type=['txt', 'docx'])
+        uploaded_file = st.file_uploader("Upload Transcript", type=['txt', 'docx'], label_visibility="collapsed")
         
         if uploaded_file:
             st.session_state.filename = uploaded_file.name
