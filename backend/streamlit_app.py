@@ -151,10 +151,15 @@ def read_file(uploaded_file):
         return "\n".join([para.text for para in doc.paragraphs])
     return ""
 
+from datetime import timedelta
+
 def format_date(date_str):
     try:
+        # Parse UTC timestamp from DB
         dt = datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
-        return dt.strftime('%B %d, %Y at %I:%M %p')
+        # Add 5 hours and 30 minutes for IST
+        dt_ist = dt + timedelta(hours=5, minutes=30)
+        return dt_ist.strftime('%B %d, %Y at %I:%M %p IST')
     except:
         return date_str
 
