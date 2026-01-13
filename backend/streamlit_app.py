@@ -362,6 +362,19 @@ elif st.session_state.view == 'home':
                 st.session_state.step = 'upload'
                 st.rerun()
         
+        # Show file info instead of the big text editor
+        st.success(f"✅ Ready to process: **{st.session_state.filename}**")
+        
+        # Collapsible view of the transcript
+        with st.expander("👁️ View Transcript Content"):
+            st.markdown(f"""
+            <div style='background-color:white; padding:1rem; border-radius:8px; border:1px solid #e5e7eb; max-height:300px; overflow-y:auto; white-space: pre-wrap; font-family: monospace; font-size: 0.9rem; color: #374151;'>
+            {st.session_state.transcript}
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.write("") # Spacer
+        
         if st.button("Generate Summary & Emails", type="primary"):
             with st.spinner("Generating content with Gemini AI..."):
                 api_key = os.getenv("GEMINI_API_KEY")
