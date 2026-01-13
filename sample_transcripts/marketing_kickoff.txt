@@ -1,0 +1,29 @@
+Meeting: Q1 Marketing Campaign Kickoff
+Date: October 15, 2023
+Attendees: Sarah (CMO), Mike (Content Lead), Jessica (Social Media), David (Design)
+
+Sarah: Alright everyone, thanks for joining. We need to get the ball rolling on the Q1 campaign for the new "EcoHome" product line. The goal is to drive brand awareness and get 10,000 signups for the beta waitlist by the end of January.
+
+Mike: 10k is a big number, but I think we can hit it if we leverage our existing email list. I'm planning a 4-part email sequence. First one goes out next week teasing the launch.
+
+Jessica: On the social side, I'm thinking we do a "Day in the Life" series with influencers showing how they use eco-friendly products. I've got a list of 5 influencers who align well with our brand.
+
+David: Do we have the visual assets for this? I need the final product shots before I can start on the ad creatives.
+
+Sarah: Good point, David. The product team said they'd have the high-res renders ready by Friday. Can you start with the mockups using the prototypes?
+
+David: Yeah, I can do that. I'll have some draft concepts for the Instagram ads by Wednesday.
+
+Mike: I also think we should do a webinar. "How to make your home sustainable in 2024". We can pitch the product at the end.
+
+Sarah: I love that idea. Let's schedule the webinar for mid-January. Mike, can you outline the script? Jessica, start teasing it on Twitter and LinkedIn.
+
+Jessica: Will do. I'll also set up the tracking pixels so we can retarget visitors who don't sign up immediately.
+
+Sarah: Perfect. So, action items: Mike on the email sequence and webinar outline. Jessica on influencer outreach and tracking setup. David on ad creatives, aiming for drafts by Wednesday. Let's reconvene next Monday to review progress.
+
+Mike: Sounds good.
+
+David: Got it.
+
+Jessica: See you all then.

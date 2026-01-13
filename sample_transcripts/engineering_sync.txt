@@ -1,0 +1,29 @@
+Meeting: Weekly Engineering Sync
+Date: December 5, 2023
+Attendees: Tom (CTO), Jerry (DevOps), Lisa (Backend), Mark (Frontend)
+
+Tom: Let's get started. Main agenda today is the server migration and the API latency issues we saw yesterday.
+
+Jerry: Yeah, the migration to the new AWS region is 90% done. The database replication finished this morning. We just need to switch the DNS pointers. I'm planning to do that tonight at 2 AM EST to minimize downtime.
+
+Lisa: Quick heads up on that - the payment service has a hardcoded IP address in one of the config files. I need to update that before you switch the DNS, otherwise payments will fail.
+
+Tom: Good catch, Lisa. Please deploy that fix ASAP. What about the latency?
+
+Lisa: It looks like the search query is unoptimized. When a user searches for "winter jackets", it's doing a full table scan instead of using the index. I'm writing a migration to add a composite index on category and name.
+
+Mark: That explains why the search results page was timing out for me. On the frontend, I'm working on the new checkout page. It's looking good, but I'm waiting on the new Stripe API keys.
+
+Tom: I'll Slack those keys to you right after this meeting.
+
+Jerry: One more thing - we're running out of disk space on the logging server. We're logging too much debug info in production.
+
+Tom: Lisa, can you lower the log level to INFO instead of DEBUG for the production environment?
+
+Lisa: Sure, I'll change that env variable when I deploy the config fix.
+
+Tom: Excellent. So, plan for today: Lisa fixes the config and log level. Jerry handles the DNS switch tonight. Mark continues on checkout. I'll send the keys. Let's make sure we're all on standby during the migration tonight just in case.
+
+Jerry: Will do.
+
+Mark: Roger that.

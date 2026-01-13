@@ -1,0 +1,31 @@
+Meeting: Product Roadmap Review - Mobile App v2.0
+Date: November 2, 2023
+Attendees: Alex (PM), Sam (Lead Dev), Pri (UX Designer)
+
+Alex: Hi team, let's review the roadmap for the v2.0 mobile app release. The main focus is improving the user onboarding flow and adding the new "Dark Mode" feature requested by users.
+
+Sam: Regarding Dark Mode, the backend is ready to handle the theme preference, but we're hitting some snags with the legacy UI components. They don't support dynamic coloring easily.
+
+Pri: I noticed that too. I've redesigned the settings screen to be cleaner, but if we have to refactor the legacy components, it might push the timeline back.
+
+Alex: How much of a delay are we talking about?
+
+Sam: Probably an extra week of dev time. We'd need to rewrite the button and card components in the new framework.
+
+Alex: Okay, that's acceptable. The onboarding flow is higher priority though. We're seeing a 40% drop-off at the "Profile Setup" screen.
+
+Pri: I think it's too long. I've simplified it to just 3 steps instead of 7. We can ask for the extra info later, once they're actually using the app.
+
+Alex: Agreed. Let's implement the 3-step flow for this release. Sam, can we prioritize the onboarding changes over Dark Mode if we get crunched for time?
+
+Sam: Yes, definitely. Onboarding is a frontend-only change mostly, so we can knock that out.
+
+Alex: Great. Also, are we still on track for the beta release on the 20th?
+
+Sam: It'll be tight with the component refactoring, but yes, I think we can make it. I'll need to pull in another dev from the web team for a few days.
+
+Alex: I'll approve that resource request. So, plan is: Pri finalizes the Dark Mode colors by tomorrow. Sam starts the component refactor and assigns the onboarding changes to the junior dev. I'll update the stakeholders on the potential 1-week buffer.
+
+Pri: Sounds like a plan.
+
+Sam: I'll get started on the refactor today.
