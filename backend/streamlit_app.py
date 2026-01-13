@@ -317,7 +317,6 @@ elif st.session_state.view == 'home':
                 st.session_state.step = 'upload'
                 st.rerun()
         
-        st.text_area("Transcript", value=st.session_state.transcript, height=400, key="transcript_editor")
         
         if st.button("Generate Summary & Emails", type="primary"):
             with st.spinner("Generating content with Gemini AI..."):
