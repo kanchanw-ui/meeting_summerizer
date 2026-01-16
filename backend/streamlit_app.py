@@ -280,17 +280,39 @@ if 'generation_result' not in st.session_state:
 
 # --- Login Screen ---
 if not st.session_state.user:
-    col1, col2, col3 = st.columns([1, 2, 1])
+    # Use columns to center the login card
+    col1, col2, col3 = st.columns([3, 2, 3])
+    
     with col2:
-        st.title("🎙️ AI Meeting Summarizer")
-        st.markdown("### Welcome Back")
+        # Custom Header with Icon
+        st.markdown("""
+            <div style="text-align: center; margin-bottom: 2rem; margin-top: 2rem;">
+                <div style="background-color: #eff6ff; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                    <span style="font-size: 40px;">🎙️</span>
+                </div>
+                <h1 style="color: #1e293b; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;">Welcome Back</h1>
+                <p style="color: #64748b; font-size: 1rem;">Sign in to your account</p>
+            </div>
+        """, unsafe_allow_html=True)
         
-        st.info("👋 **Demo Access**\n\nUsername: `admin`\n\nPassword: `demo123`")
+        # Styled Demo Credentials Box
+        st.markdown("""
+            <div style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1rem; margin-bottom: 2rem; text-align: center;">
+                <p style="margin: 0; color: #475569; font-size: 0.9rem; font-weight: 600;">👋 Demo Access</p>
+                <div style="margin-top: 0.5rem; display: flex; justify-content: center; gap: 1rem; font-family: monospace; font-size: 0.85rem; color: #64748b;">
+                    <span>User: <strong style="color: #334155;">admin</strong></span>
+                    <span>Pass: <strong style="color: #334155;">demo123</strong></span>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
         
         with st.form("login_form"):
-            username = st.text_input("Username")
-            password = st.text_input("Password", type="password")
-            submit = st.form_submit_button("Login", use_container_width=True)
+            username = st.text_input("Username", placeholder="admin")
+            password = st.text_input("Password", type="password", placeholder="•••••••")
+            
+            st.markdown("<div style='height: 10px'></div>", unsafe_allow_html=True)
+            
+            submit = st.form_submit_button("Sign In", use_container_width=True, type="primary")
             
             if submit:
                 if username == "admin" and password == "demo123":
