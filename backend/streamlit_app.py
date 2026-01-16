@@ -285,17 +285,19 @@ if not st.session_state.user:
         st.title("🎙️ AI Meeting Summarizer")
         st.markdown("### Welcome Back")
         
+        st.info("👋 **Demo Access**\n\nUsername: `admin`\n\nPassword: `demo123`")
+        
         with st.form("login_form"):
             username = st.text_input("Username")
             password = st.text_input("Password", type="password")
             submit = st.form_submit_button("Login", use_container_width=True)
             
             if submit:
-                if username == "admin" and password:
+                if username == "admin" and password == "demo123":
                     st.session_state.user = username
                     st.rerun()
                 else:
-                    st.error("Invalid credentials. Username must be 'admin'.")
+                    st.error("Invalid credentials. Please use the demo details above.")
     st.stop()
 
 # --- Sidebar ---
